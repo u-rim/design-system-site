@@ -1,0 +1,18 @@
+import type { SVGProps } from "react";
+
+export function AddreactionOutlinedIcon({ className = "size-6", ...props }: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      className={className}
+      aria-hidden="true"
+      focusable="false"
+      {...props}
+      viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M23 4.00003H20V1H18V4.00003L15 4.00003L15 6.00003L18 6.00003V9L20 9V6.00003L23 6.00003V4.00003Z" fill="currentColor"/>
+<path d="M12 3.04938C11.6711 3.01672 11.3375 3 11 3C5.47715 3 1 7.47715 1 13C1 18.5228 5.47715 23 11 23C16.5228 23 21 18.5228 21 13H19C19 17.4183 15.4183 21 11 21C6.58172 21 3 17.4183 3 13C3 8.58172 6.58172 5 11 5C11.3387 5 11.6724 5.02104 12 5.06189V3.04938Z" fill="currentColor"/>
+<path d="M8 12.5C8.82843 12.5 9.5 11.8284 9.5 11C9.5 10.1716 8.82843 9.5 8 9.5C7.17157 9.5 6.5 10.1716 6.5 11C6.5 11.8284 7.17157 12.5 8 12.5Z" fill="currentColor"/>
+<path d="M14.5351 14.5C12.5825 16.4526 9.41664 16.4526 7.46402 14.5L6.0498 15.9142C8.78347 18.6479 13.2156 18.6479 15.9493 15.9142L14.5351 14.5Z" fill="currentColor"/>
+<path d="M15.5 11C15.5 11.8284 14.8284 12.5 14 12.5C13.1716 12.5 12.5 11.8284 12.5 11C12.5 10.1716 13.1716 9.5 14 9.5C14.8284 9.5 15.5 10.1716 15.5 11Z" fill="currentColor"/>
+</svg>
+  );
+}

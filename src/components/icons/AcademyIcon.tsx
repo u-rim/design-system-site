@@ -1,0 +1,15 @@
+import type { SVGProps } from "react";
+
+export function AcademyIcon({ className = "size-6", ...props }: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      className={className}
+      aria-hidden="true"
+      focusable="false"
+      {...props}
+      viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.5 10.5C13.5 11.3284 12.8284 12 12 12C11.1716 12 10.5 11.3284 10.5 10.5C10.5 9.67157 11.1716 9 12 9C12.8284 9 13.5 9.67157 13.5 10.5Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M2 7V21H22V7H17.6471L12 3L6.35294 7H2ZM20 19V9H18V19H20ZM16 19V8.28424L12 5.45091L8 8.28424V19H16ZM6 19V9H4V19H6Z" fill="currentColor"/>
+</svg>
+  );
+}

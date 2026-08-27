@@ -1,0 +1,15 @@
+import type { SVGProps } from "react";
+
+export function CopyIcon({ className = "size-6", ...props }: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      className={className}
+      aria-hidden="true"
+      focusable="false"
+      {...props}
+      viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M6 3C6 2.44772 6.44772 2 7 2H21C21.5523 2 22 2.44772 22 3V17C22 17.5523 21.5523 18 21 18H7C6.44772 18 6 17.5523 6 17V3ZM8 4H20V16H8V4Z" fill="currentColor"/>
+<path d="M4 20L4 4H2V21C2 21.5523 2.44772 22 3 22H20V20H4Z" fill="currentColor"/>
+</svg>
+  );
+}

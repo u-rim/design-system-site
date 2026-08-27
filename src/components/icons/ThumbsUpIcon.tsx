@@ -1,0 +1,15 @@
+import type { SVGProps } from "react";
+
+export function ThumbsUpIcon({ className = "size-6", ...props }: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      className={className}
+      aria-hidden="true"
+      focusable="false"
+      {...props}
+      viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 11C2.44772 11 2 11.5472 2 12.2222V20.7778C2 21.4528 2.44772 22 3 22H6V11H3Z" fill="currentColor"/>
+<path d="M21.9463 12.4903L20.0973 20.9952C19.9703 21.5794 19.4127 22 18.765 22H8V11L11.2494 2.39078C11.3348 2.16454 11.5724 2.0297 11.8069 2.08877C14.7832 2.83851 14.6508 5.30893 14 9.50001H19.2816C20.9964 9.50001 22.2826 10.9433 21.9463 12.4903Z" fill="currentColor"/>
+</svg>
+  );
+}

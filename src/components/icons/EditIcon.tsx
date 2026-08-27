@@ -1,0 +1,15 @@
+import type { SVGProps } from "react";
+
+export function EditIcon({ className = "size-6", ...props }: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      className={className}
+      aria-hidden="true"
+      focusable="false"
+      {...props}
+      viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.16548 20.0552L10.2252 18.7237L17.6498 11.299L12.7 6.3493L5.27541 13.7739L3.94392 18.8336C3.74902 19.5742 4.42487 20.2501 5.16548 20.0552Z" fill="currentColor"/>
+<path d="M13.7607 5.28865L18.7104 10.2384L19.064 9.88485C20.4308 8.51801 20.4308 6.30193 19.064 4.9351C17.6971 3.56826 15.4811 3.56826 14.1142 4.9351L13.7607 5.28865Z" fill="currentColor"/>
+</svg>
+  );
+}

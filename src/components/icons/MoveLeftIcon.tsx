@@ -1,0 +1,15 @@
+import type { SVGProps } from "react";
+
+export function MoveLeftIcon({ className = "size-6", ...props }: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      className={className}
+      aria-hidden="true"
+      focusable="false"
+      {...props}
+      viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M20.0042 19.1213H22.0042V5.12132L20.0042 5.12132V19.1213Z" fill="currentColor"/>
+<path d="M2.59 11.9142L9.50421 5L10.9184 6.41422L6.41841 10.9142L19.0042 10.9142V12.9142L6.41844 12.9142L10.9184 17.4142L9.50421 18.8284L2.59 11.9142Z" fill="currentColor"/>
+</svg>
+  );
+}

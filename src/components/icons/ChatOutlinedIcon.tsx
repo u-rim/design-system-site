@@ -1,0 +1,16 @@
+import type { SVGProps } from "react";
+
+export function ChatOutlinedIcon({ className = "size-6", ...props }: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      className={className}
+      aria-hidden="true"
+      focusable="false"
+      {...props}
+      viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 8H18V10H6V8Z" fill="currentColor"/>
+<path d="M13 12H6V14H13V12Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M6.79001 21.6091C6.14782 21.8037 5.5 21.3231 5.5 20.6521V19H3C2.44772 19 2 18.5523 2 18V4C2 3.44772 2.44772 3 3 3H21C21.5523 3 22 3.44772 22 4V16.2581C22 16.6987 21.7117 17.0874 21.29 17.2151L6.79001 21.6091ZM7.5 19.3041L20 15.5162V5H4V17H7.5V19.3041Z" fill="currentColor"/>
+</svg>
+  );
+}

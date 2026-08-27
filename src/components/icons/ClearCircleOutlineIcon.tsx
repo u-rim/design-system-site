@@ -1,0 +1,15 @@
+import type { SVGProps } from "react";
+
+export function ClearCircleOutlineIcon({ className = "size-6", ...props }: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      className={className}
+      aria-hidden="true"
+      focusable="false"
+      {...props}
+      viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M14.6088 7.89125L12 10.5L9.39124 7.89124L7.89124 9.39124L10.5 12L7.89124 14.6088L9.39124 16.1088L12 13.5L14.6088 16.1088L16.1088 14.6088L13.5 12L16.1088 9.39125L14.6088 7.89125Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M2 12C2 6.48 6.48 2 12 2C17.52 2 22 6.48 22 12C22 17.52 17.52 22 12 22C6.48 22 2 17.52 2 12ZM4 12C4 7.58457 7.58457 4 12 4C16.4154 4 20 7.58457 20 12C20 16.4154 16.4154 20 12 20C7.58457 20 4 16.4154 4 12Z" fill="currentColor"/>
+</svg>
+  );
+}

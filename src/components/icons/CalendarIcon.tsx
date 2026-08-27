@@ -1,0 +1,17 @@
+import type { SVGProps } from "react";
+
+export function CalendarIcon({ className = "size-6", ...props }: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      className={className}
+      aria-hidden="true"
+      focusable="false"
+      {...props}
+      viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.5 15V13H8.5V15H6.5Z" fill="currentColor"/>
+<path d="M11 13V15H13V13H11Z" fill="currentColor"/>
+<path d="M15.5 15V13H17.5V15H15.5Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M7 1V3H3.00009C2.73487 3 2.48052 3.10536 2.29298 3.29289C2.10545 3.48043 2.00009 3.73478 2.00009 4V21C2.00009 21.2652 2.10545 21.5196 2.29298 21.7071C2.48052 21.8946 2.73487 22 3.00009 22H21.0001C21.2653 22 21.5197 21.8946 21.7072 21.7071C21.8947 21.5196 22.0001 21.2652 22.0001 21V4C22.0001 3.73478 21.8947 3.48043 21.7072 3.29289C21.5197 3.10536 21.2653 3 21.0001 3H17V1H15V3H9V1H7ZM15 7V5H9V7H7V5H4.00009V9L20.0001 9V5H17V7H15ZM20.0001 11L4.00009 11V20H20.0001V11Z" fill="currentColor"/>
+</svg>
+  );
+}

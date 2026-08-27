@@ -1,0 +1,15 @@
+import type { SVGProps } from "react";
+
+export function NotificationsIcon({ className = "size-6", ...props }: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      className={className}
+      aria-hidden="true"
+      focusable="false"
+      {...props}
+      viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4.49998 9.5C4.49998 5.35786 7.85785 2 12 2C16.1421 2 19.5 5.35786 19.5 9.5V14.8253L21.3049 17.4305C21.7644 18.0937 21.2897 19 20.4829 19H3.51705C2.71023 19 2.23557 18.0937 2.69505 17.4305L4.49998 14.8253V9.5Z" fill="currentColor"/>
+<path d="M12 22C13.1046 22 14 21.1046 14 20H9.99998C9.99998 21.1046 10.8954 22 12 22Z" fill="currentColor"/>
+</svg>
+  );
+}

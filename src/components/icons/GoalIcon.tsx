@@ -1,0 +1,14 @@
+import type { SVGProps } from "react";
+
+export function GoalIcon({ className = "size-6", ...props }: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      className={className}
+      aria-hidden="true"
+      focusable="false"
+      {...props}
+      viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 3V21H6V13H19.1169C19.5056 13 19.7456 12.576 19.5457 12.2428L17 8L19.5457 3.75725C19.7456 3.42399 19.5056 3 19.1169 3H4Z" fill="currentColor"/>
+</svg>
+  );
+}

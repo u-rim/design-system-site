@@ -1,0 +1,15 @@
+import type { SVGProps } from "react";
+
+export function QuoteDownIcon({ className = "size-6", ...props }: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      className={className}
+      aria-hidden="true"
+      focusable="false"
+      {...props}
+      viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.5 5C8.98528 5 11 7.01472 11 9.5C11 11.1574 10.7522 12.8054 10.2648 14.3894L9 18.5H6L7 14L6.99404 13.9732C6.8318 13.9909 6.66696 14 6.5 14C4.01472 14 2 11.9853 2 9.5C2 7.01472 4.01472 5 6.5 5Z" fill="currentColor"/>
+<path d="M17.5 5C19.9853 5 22 7.01472 22 9.5C22 11.1586 21.7688 12.8091 21.3132 14.4038L20 18.5H17L18 14L17.994 13.9732C17.8318 13.9909 17.667 14 17.5 14C15.0147 14 13 11.9853 13 9.5C13 7.01472 15.0147 5 17.5 5Z" fill="currentColor"/>
+</svg>
+  );
+}

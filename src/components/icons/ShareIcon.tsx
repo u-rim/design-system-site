@@ -1,0 +1,17 @@
+import type { SVGProps } from "react";
+
+export function ShareIcon({ className = "size-6", ...props }: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      className={className}
+      aria-hidden="true"
+      focusable="false"
+      {...props}
+      viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="18" cy="5" r="3" stroke="#212529" stroke-width="2"/>
+<circle cx="18" cy="19" r="3" stroke="#212529" stroke-width="2"/>
+<circle cx="5" cy="12" r="3" stroke="#212529" stroke-width="2"/>
+<path d="M7.5 10.6538L15.2143 6.5M7.78571 13.5L15.5 17.6538" stroke="#212529" stroke-width="2"/>
+</svg>
+  );
+}

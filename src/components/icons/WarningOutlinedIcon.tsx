@@ -1,0 +1,16 @@
+import type { SVGProps } from "react";
+
+export function WarningOutlinedIcon({ className = "size-6", ...props }: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      className={className}
+      aria-hidden="true"
+      focusable="false"
+      {...props}
+      viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13 14.5263V10.0263H11V14.5263H13Z" fill="currentColor"/>
+<path d="M13 18.0263V16.0263H11V18.0263H13Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M11.1379 2.95551C11.5263 2.30817 12.4645 2.30817 12.8529 2.95551L23.0867 20.0119C23.4866 20.6784 23.0065 21.5264 22.2292 21.5264H1.76155C0.984259 21.5264 0.504147 20.6784 0.904061 20.0119L11.1379 2.95551ZM3.52774 19.5264L11.9954 5.41365L20.463 19.5264H3.52774Z" fill="currentColor"/>
+</svg>
+  );
+}

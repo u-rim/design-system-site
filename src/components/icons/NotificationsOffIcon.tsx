@@ -1,0 +1,17 @@
+import type { SVGProps } from "react";
+
+export function NotificationsOffIcon({ className = "size-6", ...props }: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      className={className}
+      aria-hidden="true"
+      focusable="false"
+      {...props}
+      viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.86423 21.0919L2.45001 19.6777L20.1277 2L21.5419 3.41421L3.86423 21.0919Z" fill="currentColor"/>
+<path d="M20.4829 19H8.78453L19.4153 8.3692C19.4711 8.73801 19.5 9.11563 19.5 9.5V14.8253L21.3049 17.4305C21.7644 18.0937 21.2898 19 20.4829 19Z" fill="currentColor"/>
+<path d="M12 2C13.5081 2 14.9122 2.4451 16.0881 3.2111L4.50001 14.7992V9.5C4.50001 5.35786 7.85788 2 12 2Z" fill="currentColor"/>
+<path d="M12 22C13.1046 22 14 21.1046 14 20H10C10 21.1046 10.8954 22 12 22Z" fill="currentColor"/>
+</svg>
+  );
+}

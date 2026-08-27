@@ -1,0 +1,15 @@
+import type { SVGProps } from "react";
+
+export function JobIcon({ className = "size-6", ...props }: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      className={className}
+      aria-hidden="true"
+      focusable="false"
+      {...props}
+      viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M14 13V15H10V13H14Z" fill="currentColor"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M9 3C7.89543 3 7 3.89543 7 5V7H4C2.89543 7 2 7.89543 2 9V19C2 20.1046 2.89543 21 4 21H20C21.1046 21 22 20.1046 22 19V9C22 7.89543 21.1046 7 20 7H17V5C17 3.89543 16.1046 3 15 3H9ZM15 7V5H9V7H15ZM20 9.5C20 9.22386 19.7761 9 19.5 9H4.5C4.22386 9 4 9.22386 4 9.5L4 18.5C4 18.7761 4.22386 19 4.5 19H19.5C19.7761 19 20 18.7761 20 18.5V9.5Z" fill="currentColor"/>
+</svg>
+  );
+}

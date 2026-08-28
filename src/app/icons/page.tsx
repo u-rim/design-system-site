@@ -178,13 +178,20 @@ function getIcon(iconName: string): IconComponent | undefined {
   return (Icons as unknown as Record<string, IconComponent>)[compName];
 }
 
-function CopyableIcon({ name }: { name: string }) {
+const SIZE_OPTIONS = [
+  { px: 16, cls: 'size-4' },
+  { px: 20, cls: 'size-5' },
+  { px: 24, cls: 'size-6' },
+  { px: 32, cls: 'size-8' },
+] as const;
+
+function CopyableIcon({ name, sizeCls }: { name: string; sizeCls: string }) {
   const [copied, setCopied] = useState(false);
   const Icon = getIcon(name);
   const compName = toComponentName(name);
 
   const handleCopy = async () => {
-    const snippet = `import { ${compName} } from "@/components/icons";\n\n<${compName} className="size-6 text-gray-900" />`;
+    const snippet = `import { ${compName} } from "@/components/icons";\n\n<${compName} className="${sizeCls} text-gray-900" />`;
     await navigator.clipboard.writeText(snippet);
     setCopied(true);
     setTimeout(() => setCopied(false), 1200);
@@ -194,17 +201,17 @@ function CopyableIcon({ name }: { name: string }) {
     <button
       type='button'
       onClick={handleCopy}
-      title={copied ? '코드 복사됨!' : `${name} 코드 복사`}
+      title={copied ? '코드 복사됨!' : `${name} 코드 복사 (${sizeCls})`}
       className='group flex flex-col items-center gap-2'
     >
-      <span className='flex size-28 items-center justify-center rounded-lg border border-[var(--color-border)] bg-white text-gray-900 transition-colors group-hover:border-gray-300 group-hover:bg-gray-100'>
+      <span className='flex size-24 items-center justify-center rounded-lg border border-[var(--color-border)] bg-white text-gray-900 transition-colors group-hover:border-gray-300 group-hover:bg-gray-100'>
         {Icon ? (
-          <Icon className='size-12' />
+          <Icon className={sizeCls} />
         ) : (
           <span className='size-6 rounded border border-dashed border-red-300' />
         )}
       </span>
-      <code className='block min-h-[2.75em] w-28 leading-tight break-words text-center text-[16px] text-gray-500 group-hover:text-gray-700'>
+      <code className='block min-h-[2.75em] w-28 leading-tight font-sans break-words text-center text-[16px] text-gray-500 group-hover:text-gray-700'>
         {copied
           ? '복사됨!'
           : name.split('_').map((part, i) => (
@@ -219,13 +226,35 @@ function CopyableIcon({ name }: { name: string }) {
 }
 
 export default function IconsPage() {
+  const [query, setQuery] = useState('');
+  const [sizeCls, setSizeCls] = useState<string>('size-8');
+
+  const q = query.trim().toLowerCase();
+  const filteredGroups = q
+    ? ICON_GROUPS.map((group) => ({
+        ...group,
+        icons: group.icons.filter(
+          (name) =>
+            name.toLowerCase().includes(q) ||
+            toComponentName(name).toLowerCase().includes(q),
+        ),
+      })).filter((group) => group.icons.length > 0)
+    : ICON_GROUPS;
+
+  const matchCount = filteredGroups.reduce(
+    (sum, group) => sum + group.icons.length,
+    0,
+  );
+
   return (
     <div className='max-w-12xl'>
-      <h1 className='mb-4 text-6xl font-bold tracking-tight'>Icons</h1>
-      <p className='mb-16 text-xl text-gray-600'>
+      <h1 className='mb-4 text-5xl font-bold tracking-tight'>Icons</h1>
+      <p className='text-base text-gray-500'>
         아이콘은 기능, 행동, 사물의 상징을 기호로 만든 것으로 효율적으로 정보를
         전달하는 역할을 합니다. 아이콘을 클릭하면 사용 코드가 복사됩니다.
       </p>
+
+      <hr className='my-10 border-gray-200' />
 
       <Image
         src='/guide.jpg'
@@ -242,20 +271,62 @@ export default function IconsPage() {
         alt='아이콘 사용 가이드 2'
         width={3588}
         height={567}
-        className='mb-12 h-auto w-full rounded-md'
+        className='mb-16 h-auto w-full rounded-md'
         unoptimized
       />
 
-      {ICON_GROUPS.map((group) => (
-        <section key={group.title} className='mb-12'>
-          <h2 className='mb-6 text-2xl font-bold'>{group.title}</h2>
-          <div className='grid grid-cols-[repeat(12,7.5rem)] gap-10'>
-            {group.icons.map((name) => (
-              <CopyableIcon key={name} name={name} />
-            ))}
-          </div>
-        </section>
-      ))}
+      <div className='flex items-center gap-3 rounded-2xl bg-[#DDE3E9] px-7 py-5'>
+        <Icons.SearchIcon className='size-7 shrink-0 text-white' />
+        <input
+          type='search'
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder='아이콘 검색 (예: heart, arrow, chevron)'
+          aria-label='아이콘 검색'
+          className='w-full bg-transparent text-lg text-slate-800 placeholder:text-white focus:outline-none'
+        />
+      </div>
+
+      <div className='mt-4 flex items-center gap-2'>
+        <div className='inline-flex rounded-lg border border-gray-200 p-0.5'>
+          {SIZE_OPTIONS.map((opt) => (
+            <button
+              key={opt.px}
+              type='button'
+              onClick={() => setSizeCls(opt.cls)}
+              className={`rounded-md px-3 py-1 text-md transition-colors ${
+                sizeCls === opt.cls
+                  ? 'bg-[var(--color-brand-5)] text-white'
+                  : 'text-gray-600 hover:bg-gray-100'
+              }`}
+            >
+              {opt.px}px
+            </button>
+          ))}
+        </div>
+        <span className='text-xs text-gray-400'>
+          클릭 시 <code>className=&quot;{sizeCls} …&quot;</code> 로 복사됩니다
+        </span>
+      </div>
+
+      <p className='mt-3 mb-10 h-5 text-sm text-gray-500'>
+        {q && `‘${query.trim()}’ 검색 결과 ${matchCount}개`}
+      </p>
+
+      {filteredGroups.length === 0 ? (
+        <p className='py-16 text-center text-gray-400'>검색 결과가 없습니다.</p>
+      ) : (
+        filteredGroups.map((group) => (
+          <section key={group.title} className='mb-12'>
+            <h2 className='mb-6 text-2xl font-bold'>{group.title}</h2>
+            <div className='grid grid-cols-[repeat(8,7.5rem)] gap-7'>
+              {group.icons.map((name) => (
+                <CopyableIcon key={name} name={name} sizeCls={sizeCls} />
+              ))}
+            </div>
+          </section>
+        ))
+      )}
     </div>
   );
 }

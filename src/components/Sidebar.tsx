@@ -6,21 +6,24 @@ import { usePathname } from 'next/navigation';
 const NAV = [
   {
     group: 'Intro',
-    items: [{ label: '소개', href: '/' }],
+    items: [{ label: 'Overview', href: '/' }],
   },
   {
-    group: 'foundation',
+    group: 'Token',
     items: [
-      { label: '컬러', href: '/colors' },
-      { label: '타이포그래피', href: '/typography' },
-      { label: '아이콘', href: '/icons' },
+      { label: 'Color', href: '/colors' },
+      { label: 'Typography', href: '/typography' },
+      { label: 'Icon', href: '/icons' },
+      { label: 'Spacing', href: '/spacing' },
+      { label: 'Radius', href: '/radius' },
+      { label: 'Elevation', href: '/elevation' },
     ],
   },
   {
-    group: 'components',
+    group: 'Components',
     items: [
-      { label: '버튼', href: '/components/button' },
-      { label: '인풋', href: '/components/input' },
+      { label: 'Button', href: '/components/button' },
+      { label: 'Input', href: '/components/input' },
     ],
   },
 ];
@@ -29,7 +32,7 @@ export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className='sticky top-0 h-screen w-80 shrink-0 overflow-y-auto border-r border-[var(--color-border)] bg-white px-5 py-8'>
+    <aside className='sticky top-0 h-screen w-64 shrink-0 overflow-y-auto border-r border-[var(--color-border)] bg-white px-5 py-8'>
       <Link
         href='/'
         className='mb-8 block text-3xl font-semibold tracking-tight'

@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { Callout } from '@/components/Callout';
 
 const TYPE_SCALE = [
   { text: '타이틀 및 제목', cls: 'text-3xl font-bold', n: 1, label: 'Heading' },
@@ -328,29 +328,12 @@ export default function TypographyPage() {
           medium(500), bold(700)으로 사용합니다.
         </p>
 
-        <div className='mt-5 rounded-lg border border-gray-200 bg-white px-5 py-4'>
-          <p className='flex items-center gap-2 font-bold text-slate-700'>
-            <svg
-              viewBox='0 0 24 24'
-              className='size-5 flex-none'
-              fill='currentColor'
-              aria-hidden='true'
-            >
-              <path
-                fillRule='evenodd'
-                clipRule='evenodd'
-                d='M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2Zm1 13v2h-2v-2h2Zm0-8v6h-2V7h2Z'
-              />
-            </svg>
-            참고사항
-          </p>
-          <ul className='mt-2 list-disc pl-8 text-sm text-gray-500'>
-            <li>
-              지나치게 얇은 두께 (light,thin)는 배경과의 구분이 어렵고, 지나치게
-              두꺼운 두께 (extra bold)는 시각적 피로를 유발할 수 있습니다.
-            </li>
-          </ul>
-        </div>
+        <Callout className='mt-5'>
+          <li>
+            지나치게 얇은 두께 (light,thin)는 배경과의 구분이 어렵고, 지나치게
+            두꺼운 두께 (extra bold)는 시각적 피로를 유발할 수 있어요.
+          </li>
+        </Callout>
 
         <hr className='my-6 border-gray-200' />
 

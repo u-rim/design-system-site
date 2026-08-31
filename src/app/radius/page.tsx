@@ -1,20 +1,23 @@
-type RadiusToken = { name: string; px: number; label: string; usage?: string };
+import { Callout } from '@/components/Callout';
+import { scaleEntries, tokens } from '@/tokens';
 
-const RADIUS: RadiusToken[] = [
-  { name: 'radius-0', px: 0, label: '0px', usage: '표, 이미지 등 각진 요소' },
-  { name: 'radius-1', px: 2, label: '2px' },
-  { name: 'radius-2', px: 4, label: '4px', usage: '뱃지, 태그, 작은 칩' },
-  { name: 'radius-3', px: 8, label: '8px', usage: '버튼, 인풋 기본값' },
-  { name: 'radius-4', px: 12, label: '12px', usage: '카드' },
-  { name: 'radius-5', px: 16, label: '16px', usage: '모달, 큰 컨테이너' },
-  { name: 'radius-6', px: 24, label: '24px', usage: '히어로 영역, 강조 카드' },
-  {
-    name: 'radius-full',
-    px: 9999,
-    label: 'full',
-    usage: '아바타, 파일 칩, 원형 버튼',
-  },
-];
+// 토큰 값은 tokens.ts, 아래는 문서용 설명만
+const USAGE: Record<string, string> = {
+  0: '표, 이미지 등 각진 요소',
+  2: '뱃지, 태그, 작은 칩',
+  3: '버튼, 인풋 기본값',
+  4: '카드',
+  5: '모달, 큰 컨테이너',
+  6: '히어로 영역, 강조 카드',
+  full: '아바타, 파일 칩, 원형 버튼',
+};
+
+const RADIUS = scaleEntries(tokens.radius).map(({ step, value }) => ({
+  name: `radius-${step}`,
+  px: value,
+  label: step === 'full' ? 'full' : `${value}px`,
+  usage: USAGE[step],
+}));
 
 export default function RadiusPage() {
   return (
@@ -25,18 +28,10 @@ export default function RadiusPage() {
         따라 단계별 값을 사용합니다.
       </p>
 
-      <div className='mt-8 rounded-lg border border-gray-200 bg-white px-5 py-4'>
-        <p className='flex items-center gap-2 font-bold text-slate-700'>
-          <span aria-hidden='true'>💡</span>
-          사용 원칙
-        </p>
-        <ul className='mt-2 list-disc space-y-1 pl-8 text-sm text-gray-500'>
-          <li>
-            컴포넌트가 클수록 큰 radius 토큰을 사용해 시각적 비율을 맞춥니다.
-          </li>
-          <li>원형이 필요한 요소는 radius-full을 사용합니다.</li>
-        </ul>
-      </div>
+      <Callout className='mt-8'>
+        <li>컴포넌트가 클수록 큰 radius 토큰을 사용해 시각적 비율을 맞춰요.</li>
+        <li>원형이 필요한 요소는 radius-full을 사용해요.</li>
+      </Callout>
 
       <hr className='my-12 border-white' />
 

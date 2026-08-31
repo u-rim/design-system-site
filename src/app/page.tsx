@@ -1,10 +1,12 @@
+import { Callout } from '@/components/Callout';
+
 export default function Home() {
   return (
     <div className='max-w-8xl'>
       <p className='mb-4 text-xl font-medium text-[var(--color-brand-5)]'>
-        urim Design System
+        Design System
       </p>
-      <h1 className='mb-4 text-4xl font-medium tracking-tight'>
+      <h1 className='mb-4 text-4xl font-bold tracking-tight'>
         디자인 시스템 문서
       </h1>
       <p className='text-lg leading-relaxed text-gray-600'>
@@ -12,26 +14,18 @@ export default function Home() {
         복사해서 사용할 수 있습니다. 왼쪽 메뉴에서 원하는 항목을 선택하세요.
       </p>
 
-      <div className='mt-10 rounded-lg border border-gray-200 bg-white px-5 py-4'>
-        <p className='flex items-center gap-2 font-bold text-slate-700'>
-          <span aria-hidden='true'>💡</span>
-          설계 원칙
-        </p>
-        <ul className='mt-2 list-disc space-y-1 pl-8 text-sm text-gray-500'>
-          <li>모든 토큰은 플랫폼 독립적인 원본 값을 기준으로 관리합니다</li>
-          <li>
-            컴포넌트는 값을 직접 갖지 않고 토큰을 참조하는 방식으로 구성합니다
-          </li>
-          <li>
-            하나의 토큰 값만 수정해도 이를 사용하는 모든 컴포넌트에 일관되게
-            반영됩니다
-          </li>
-          <li>
-            Spacing은 px 단위로 정의하며, iOS/Android에서는 pt/dp로 1:1
-            매핑됩니다
-          </li>
-        </ul>
-      </div>
+      <Callout className='mt-10'>
+        <li>
+          컴포넌트는 값을 직접 갖지 않고 토큰을 참조하는 방식으로 구성해요.
+        </li>
+        <li>
+          하나의 토큰 값만 수정해도 이를 사용하는 모든 컴포넌트에 일관되게
+          반영돼요.
+        </li>
+        <li>
+          Spacing은 px 단위로 정의하고, iOS/Android에서는 pt/dp로 1:1 매핑돼요.
+        </li>
+      </Callout>
 
       <p className='mt-6 text-base leading-relaxed text-gray-600'>
         모든 디자인 토큰은 플랫폼에 종속되지 않는 원본 값을 기준으로 관리됩니다.

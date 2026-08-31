@@ -1,20 +1,21 @@
-type Token = { name: string; px: number; usage?: string };
+import { Callout } from '@/components/Callout';
+import { scaleEntries, tokens } from '@/tokens';
 
-const SPACING: Token[] = [
-  { name: 'spacing-0', px: 0 },
-  { name: 'spacing-1', px: 2 },
-  { name: 'spacing-2', px: 4, usage: '아이콘과 라벨 사이 등 최소 간격' },
-  { name: 'spacing-3', px: 8, usage: '인접한 요소 사이 기본 간격' },
-  { name: 'spacing-4', px: 12 },
-  { name: 'spacing-5', px: 16, usage: '컴포넌트 내부 패딩 기본값' },
-  { name: 'spacing-6', px: 20 },
-  { name: 'spacing-7', px: 24, usage: '카드/섹션 내부 여백' },
-  { name: 'spacing-8', px: 32 },
-  { name: 'spacing-9', px: 40 },
-  { name: 'spacing-10', px: 48, usage: '섹션과 섹션 사이' },
-  { name: 'spacing-11', px: 64 },
-  { name: 'spacing-12', px: 80, usage: '페이지 상하 큰 여백' },
-];
+// 토큰 값은 tokens.ts, 아래는 문서용 설명만
+const USAGE: Record<string, string> = {
+  2: '아이콘과 라벨 사이 등 최소 간격',
+  3: '인접한 요소 사이 기본 간격',
+  5: '컴포넌트 내부 패딩 기본값',
+  7: '카드/섹션 내부 여백',
+  10: '섹션과 섹션 사이',
+  12: '페이지 상하 큰 여백',
+};
+
+const SPACING = scaleEntries(tokens.spacing).map(({ step, value }) => ({
+  name: `spacing-${step}`,
+  px: value,
+  usage: USAGE[step],
+}));
 
 export default function SpacingPage() {
   return (
@@ -25,18 +26,12 @@ export default function SpacingPage() {
         px 단위로 관리하며 iOS는 pt, Android는 dp로 1:1 매핑됩니다.
       </p>
 
-      <div className='mt-8 rounded-lg border border-gray-200 bg-white px-5 py-4'>
-        <p className='flex items-center gap-2 font-bold text-slate-700'>
-          <span aria-hidden='true'>💡</span>
-          사용 원칙
-        </p>
-        <ul className='mt-2 list-disc space-y-1 pl-8 text-sm text-gray-500'>
-          <li>임의의 px 값을 직접 쓰지 않고 항상 spacing 토큰을 참조합니다.</li>
-          <li>
-            간격 기준이 바뀌면 토큰 값만 수정해 모든 화면에 일관되게 반영합니다.
-          </li>
-        </ul>
-      </div>
+      <Callout className='mt-8'>
+        <li>임의의 px 값을 직접 쓰지 않고 항상 spacing 토큰을 참조해요.</li>
+        <li>
+          간격 기준이 바뀌면 토큰 값만 수정해 모든 화면에 일관되게 반영해요.
+        </li>
+      </Callout>
 
       <hr className='my-12 border-white' />
 

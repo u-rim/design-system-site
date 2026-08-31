@@ -1,32 +1,9 @@
-type Elevation = { name: string; shadow: string };
+import { scaleEntries, tokens } from '@/tokens';
 
-const ELEVATION: Elevation[] = [
-  {
-    name: 'elevation-1',
-    shadow:
-      '0 1px 2px rgba(20, 24, 31, 0.06), 0 1px 3px rgba(20, 24, 31, 0.08)',
-  },
-  {
-    name: 'elevation-2',
-    shadow:
-      '0 2px 4px rgba(20, 24, 31, 0.06), 0 4px 8px rgba(20, 24, 31, 0.08)',
-  },
-  {
-    name: 'elevation-3',
-    shadow:
-      '0 4px 8px rgba(20, 24, 31, 0.06), 0 8px 16px rgba(20, 24, 31, 0.10)',
-  },
-  {
-    name: 'elevation-4',
-    shadow:
-      '0 8px 16px rgba(20, 24, 31, 0.08), 0 16px 32px rgba(20, 24, 31, 0.12)',
-  },
-  {
-    name: 'elevation-5',
-    shadow:
-      '0 12px 24px rgba(20, 24, 31, 0.10), 0 24px 48px rgba(20, 24, 31, 0.16)',
-  },
-];
+const ELEVATION = scaleEntries(tokens.elevation).map(({ step, value }) => ({
+  name: `elevation-${step}`,
+  shadow: value,
+}));
 
 export default function ElevationPage() {
   return (

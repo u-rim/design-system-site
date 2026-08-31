@@ -1,66 +1,26 @@
+import { Callout } from '@/components/Callout';
 import { ColorChip } from '@/components/ColorChip';
+import { scaleEntries, tokens } from '@/tokens';
 
-type Swatch = { hex: string; name: string; contrast: string };
+type Swatch = { hex: string; name: string };
 
-const BLUEGRAY: Swatch[] = [
-  { hex: '#F8F9FA', name: 'bluegray-1', contrast: 'W1.05,B19.92' },
-  { hex: '#DDE3E9', name: 'bluegray-2', contrast: 'W1.29,B16.24' },
-  { hex: '#C4CCD4', name: 'bluegray-3', contrast: 'W1.62,B12.93' },
-  { hex: '#929EAA', name: 'bluegray-4', contrast: 'W2.73,B7.69' },
-  { hex: '#697787', name: 'bluegray-5', contrast: 'W4.58,B4.59' },
-  { hex: '#4F5C6A', name: 'bluegray-6', contrast: 'W6.84,B3.07' },
-  { hex: '#3C4551', name: 'bluegray-7', contrast: 'W9.71,B2.16' },
-  { hex: '#2C343F', name: 'bluegray-8', contrast: 'W12.57,B1.67' },
-  { hex: '#212832', name: 'bluegray-9', contrast: 'W14.85,B1.41' },
-  { hex: '#11161F', name: 'bluegray-10', contrast: 'W18.13,B1.16' },
-];
+const colorScale = (
+  name: string,
+  obj: Record<string | number, string>,
+): Swatch[] =>
+  scaleEntries(obj).map(({ step, value }) => ({
+    name: `${name}-${step}`,
+    hex: value,
+  }));
 
-const BLUE: Swatch[] = [
-  { hex: '#EBEEFF', name: 'blue-1', contrast: 'W1.15, B18.21' },
-  { hex: '#E0E3FF', name: 'blue-2', contrast: 'W1.26, B16.6' },
-  { hex: '#CCD1FE', name: 'blue-3', contrast: 'W1.49, B14.12' },
-  { hex: '#B1B8FF', name: 'blue-4', contrast: 'W1.88, B11.17' },
-  { hex: '#9195DE', name: 'blue-5', contrast: 'W2.78, B7.56' },
-  { hex: '#7167D0', name: 'blue-6', contrast: 'W4.61, B4.55' },
-  { hex: '#5C3FD0', name: 'blue-7', contrast: 'W6.83, B3.08' },
-  { hex: '#4522D2', name: 'blue-8', contrast: 'W8.7, B2.41' },
-  { hex: '#2606A6', name: 'blue-9', contrast: 'W12.66, B1.66' },
-  { hex: '#160461', name: 'blue-10', contrast: 'W17.16, B1.22' },
-];
+const BLUEGRAY = colorScale('bluegray', tokens.color.bluegray);
+const BLUE = colorScale('blue', tokens.color.blue);
+const RED = colorScale('red', tokens.color.red);
+const GREEN = colorScale('green', tokens.color.green);
 
-const RED: Swatch[] = [
-  { hex: '#FFECEB', name: 'red-1', contrast: 'W1.14,B18.45' },
-  { hex: '#FFD5D2', name: 'red-2', contrast: 'W1.34,B15.7' },
-  { hex: '#FFC2BE', name: 'red-3', contrast: 'W1.53,B13.71' },
-  { hex: '#FF9189', name: 'red-4', contrast: 'W2.17,B9.66' },
-  { hex: '#F66C62', name: 'red-5', contrast: 'W2.9,B7.24' },
-  { hex: '#EB5A4F', name: 'red-6', contrast: 'W3.44,B6.11' },
-  { hex: '#CE453B', name: 'red-7', contrast: 'W4.63,B4.54' },
-  { hex: '#AE2E24', name: 'red-8', contrast: 'W6.53,B3.22' },
-  { hex: '#5D1F1A', name: 'red-9', contrast: 'W12.53,B1.68' },
-  { hex: '#42221F', name: 'red-10', contrast: 'W14.19,B1.48' },
-];
-
-const GREEN: Swatch[] = [
-  { hex: '#EBF7EF', name: 'green-1', contrast: 'W1.1,B19.08' },
-  { hex: '#D7EFDE', name: 'green-2', contrast: 'W1.21,B17.29' },
-  { hex: '#AFDFBE', name: 'green-3', contrast: 'W1.49,B14.12' },
-  { hex: '#87CF9D', name: 'green-4', contrast: 'W1.84,B11.44' },
-  { hex: '#5FBF7C', name: 'green-5', contrast: 'W2.28,B9.23' },
-  { hex: '#519C68', name: 'green-6', contrast: 'W3.33,B6.31' },
-  { hex: '#468259', name: 'green-7', contrast: 'W4.57,B4.6' },
-  { hex: '#30603E', name: 'green-8', contrast: 'W7.32,B2.87' },
-  { hex: '#24482E', name: 'green-9', contrast: 'W10.29,B2.04' },
-  { hex: '#18301F', name: 'green-10', contrast: 'W14.18,B1.48' },
-];
-
-const OPACITY = [
-  { label: 'Opacity-80', value: 0.8 },
-  { label: 'Opacity-60', value: 0.6 },
-  { label: 'Opacity-40', value: 0.4 },
-  { label: 'Opacity-20', value: 0.2 },
-  { label: 'Opacity-10', value: 0.1 },
-];
+const OPACITY = scaleEntries(tokens.opacity)
+  .map(({ step, value }) => ({ label: `Opacity-${step}`, value }))
+  .sort((a, b) => b.value - a.value);
 
 // 배경 hex 위에 흰/검 중 대비가 큰 쪽을 선택
 function textOn(hex: string): string {
@@ -139,30 +99,13 @@ export default function ColorsPage() {
         순으로 최대 10단계를 지원합니다.
       </p>
 
-      <div className='mt-8 rounded-lg border border-gray-200 bg-white px-5 py-4'>
-        <p className='flex items-center gap-2 font-bold text-slate-700'>
-          <svg
-            viewBox='0 0 24 24'
-            className='size-5 flex-none'
-            fill='currentColor'
-            aria-hidden='true'
-          >
-            <path
-              fillRule='evenodd'
-              clipRule='evenodd'
-              d='M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2Zm1 13v2h-2v-2h2Zm0-8v6h-2V7h2Z'
-            />
-          </svg>
-          유의사항
-        </p>
-        <ul className='mt-2 list-disc space-y-1 pl-8 text-sm text-gray-500'>
-          <li>
-            정의되지 않은 새로운 색상은 global하게 사용하게 되는 상황에서만
-            추가합니다.
-          </li>
-          <li>색상을 추가하기 전 반드시 디자인팀에게 요청해주세요.</li>
-        </ul>
-      </div>
+      <Callout title='유의사항' className='mt-8'>
+        <li>
+          정의되지 않은 새로운 색상은 global하게 사용하게 되는 상황에서만
+          추가해요.
+        </li>
+        <li>색상을 추가하기 전 반드시 디자인팀에 요청해요.</li>
+      </Callout>
 
       <h2 className='mt-16 mb-3 text-3xl font-bold text-slate-800'>Grayscale</h2>
       <p className='mb-8 text-base text-gray-500'>
@@ -175,14 +118,14 @@ export default function ColorsPage() {
         <p className='mb-2 text-sm font-bold text-slate-700'>common</p>
         <div className='grid grid-cols-2 overflow-hidden rounded-lg ring-1 ring-black/5 ring-inset'>
           <ColorChip
-            copyValue='#FFFFFF'
+            copyValue={tokens.color.white}
             className='h-16'
-            style={{ background: '#ffffff', color: '#212832' }}
+            style={{ background: tokens.color.white, color: textOn(tokens.color.white) }}
           />
           <ColorChip
-            copyValue='#000000'
+            copyValue={tokens.color.black}
             className='h-16'
-            style={{ background: '#000000', color: '#ffffff' }}
+            style={{ background: tokens.color.black, color: textOn(tokens.color.black) }}
           />
         </div>
         <div className='grid grid-cols-2'>
@@ -218,7 +161,7 @@ export default function ColorsPage() {
               <div
                 key={o.label}
                 className='h-14'
-                style={{ background: `rgba(17, 22, 31, ${o.value})` }}
+                style={{ background: `color-mix(in srgb, ${tokens.color.bluegray[10]} ${o.value * 100}%, transparent)` }}
               />
             ))}
           </div>

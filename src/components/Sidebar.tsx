@@ -24,6 +24,8 @@ const NAV = [
     items: [
       { label: 'Button', href: '/components/button' },
       { label: 'Input', href: '/components/input' },
+      { label: 'Checkbox', href: '/components/checkbox' },
+      { label: 'Radio', href: '/components/radio' },
     ],
   },
 ];

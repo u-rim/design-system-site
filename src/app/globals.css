@@ -1,24 +1,19 @@
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css');
 @import 'tailwindcss';
 
+/*
+ * 디자인 토큰(--color-*, --spacing-*, --radius-*, --elevation-*, --font-* …)은
+ * src/tokens.ts 에서 생성되어 src/app/layout.tsx 의 <style id="design-tokens"> 로 :root 에 주입됩니다.
+ * 값을 바꾸려면 tokens.ts 만 수정하세요.
+ *
+ * 아래 @theme 는 Tailwind 유틸(font-sans / font-mono) 생성을 위해서만 남겨두며,
+ * 폰트 스택은 tokens.ts 의 font.family 와 동일하게 유지합니다.
+ */
 @theme {
   --font-sans:
     'Pretendard Variable', 'Pretendard', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-
-  /* Neutral / gray scale */
-  --color-bluegray-1: #f8f9fa;
-  --color-bluegray-10: #212529;
-  --color-black-perm: #181c1f;
-  --color-white-perm: #ffffff;
-
-  /* Brand */
-  --color-brand-5: #9966ff;
-
-  /* Semantic surface & text */
-  --color-surface: var(--color-white-perm);
-  --color-ink: var(--color-bluegray-10);
-  --color-border: #e9ecef;
+  /* 모든 텍스트를 Pretendard로 통일 (mono 미사용) */
+  --font-mono: var(--font-sans);
 }
 
 html {
@@ -28,5 +23,13 @@ html {
 body {
   background: var(--color-surface);
   color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+/* code/pre/kbd 등도 Pretendard로 (브라우저 기본 monospace 무효화) */
+code,
+pre,
+kbd,
+samp {
   font-family: var(--font-sans);
 }
